@@ -1,16 +1,21 @@
+body {
+  font-family: "Satoshi", sans-serif;
+}
 .main_container {
-  background: radial-gradient(rgb(56, 48, 54) 0%, rgb(8, 8, 8) 100%);
+  /*background: radial-gradient(rgb(56, 48, 54) 0%, rgb(8, 8, 8) 100%);*/
+  background-color: rgb(9, 9, 9);
   width: 100vw;
   height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow: hidden;
   justify-content: center;
 }
 .navbar {
-  font-family: "Author", sans-serif;
-  font-weight: 1000;
-  position: absolute;
+  font-family: "Satoshi", sans-serif;
+  font-weight: 700;
+  position: fixed;
   color: red;
   top: 0px;
   left: 0px;
@@ -24,12 +29,15 @@
 }
 
 .heading {
-  font-family: "Author", sans-serif;
-  font-weight: 1000;
+  font-family: "Satoshi", sans-serif;
+  font-weight: 800;
   color: rgb(188, 6, 6);
-  font-size: 65px;
+  font-size: 25px;
+  max-width: 50%;
   margin-top: 70px;
-}
+  text-align: center;
+  line-height: 50px;
+} /*theek ha kar dugi*/
 .movea_style {
   text-decoration: line-through;
 }
@@ -37,77 +45,44 @@
   width: 45%;
   margin-top: 30px;
   text-align: center;
-  color: rgb(199, 199, 195);
-  font-family: "Author", sans-serif;
+  color: rgb(210, 210, 205);
+  font-family: "Satoshi", sans-serif;
   font-weight: 100;
-  font-size: 21px;
+  font-size: 18px;
   line-height: 27px;
 }
-button {
+.start_btn {
+  color: #dfd6d6;
+  font-weight: 600;
+  font-size: 20px;
+  padding: 7px 15px;
+  margin-top: 30px;
   border: none;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 170px;
-  height: 100px;
-  padding: 0;
-  z-index: 2;
-  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='868' width='2500' viewBox='0 0 726 252.17'%3E%3Cpath d='M483.92 0S481.38 24.71 466 40.11c-11.74 11.74-24.09 12.66-40.26 15.07-9.42 1.41-29.7 3.77-34.81-.79-2.37-2.11-3-21-3.22-27.62-.21-6.92-1.36-16.52-2.82-18-.75 3.06-2.49 11.53-3.09 13.61S378.49 34.3 378 36a85.13 85.13 0 0 0-30.09 0c-.46-1.67-3.17-11.48-3.77-13.56s-2.34-10.55-3.09-13.61c-1.45 1.45-2.61 11.05-2.82 18-.21 6.67-.84 25.51-3.22 27.62-5.11 4.56-25.38 2.2-34.8.79-16.16-2.47-28.51-3.39-40.21-15.13C244.57 24.71 242 0 242 0H0s69.52 22.74 97.52 68.59c16.56 27.11 14.14 58.49 9.92 74.73C170 140 221.46 140 273 158.57c69.23 24.93 83.2 76.19 90 93.6 6.77-17.41 20.75-68.67 90-93.6 51.54-18.56 103-18.59 165.56-15.25-4.21-16.24-6.63-47.62 9.93-74.73C656.43 22.74 726 0 726 0z'/%3E%3C/svg%3E")
-    no-repeat 50% 50%;
-  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='868' width='2500' viewBox='0 0 726 252.17'%3E%3Cpath d='M483.92 0S481.38 24.71 466 40.11c-11.74 11.74-24.09 12.66-40.26 15.07-9.42 1.41-29.7 3.77-34.81-.79-2.37-2.11-3-21-3.22-27.62-.21-6.92-1.36-16.52-2.82-18-.75 3.06-2.49 11.53-3.09 13.61S378.49 34.3 378 36a85.13 85.13 0 0 0-30.09 0c-.46-1.67-3.17-11.48-3.77-13.56s-2.34-10.55-3.09-13.61c-1.45 1.45-2.61 11.05-2.82 18-.21 6.67-.84 25.51-3.22 27.62-5.11 4.56-25.38 2.2-34.8.79-16.16-2.47-28.51-3.39-40.21-15.13C244.57 24.71 242 0 242 0H0s69.52 22.74 97.52 68.59c16.56 27.11 14.14 58.49 9.92 74.73C170 140 221.46 140 273 158.57c69.23 24.93 83.2 76.19 90 93.6 6.77-17.41 20.75-68.67 90-93.6 51.54-18.56 103-18.59 165.56-15.25-4.21-16.24-6.63-47.62 9.93-74.73C656.43 22.74 726 0 726 0z'/%3E%3C/svg%3E")
-    no-repeat 50% 50%;
-  mask-size: 100%;
-  -webkit-mask-size: 100%;
-  cursor: pointer;
-  background-color: transparent;
-  transform: translateY(8px);
-}
-
-button:after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  box-shadow: 0px 0 0 0 rgb(5, 5, 5);
-  transition: all 1.5s ease;
-}
-
-button:hover:after {
-  box-shadow: 0px -13px 56px 12px #716e6ea6;
-}
-
-button .btn {
-  position: absolute;
-  width: 100%;
-  font-size: 15px;
-  font-weight: 100;
-  left: 50%;
-  top: 47%;
-  letter-spacing: 3px;
-  text-align: center;
-  transform: translate(-50%, -50%);
-  color: rgb(124, 119, 119);
-  transition: all 1.5s ease;
-}
-
-button:hover .btn {
-  color: rgb(0, 0, 0);
-}
-
-button:before {
-  content: "";
-  position: absolute;
-  width: 0;
-  height: 100%;
   background-color: rgb(188, 6, 6);
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  transition: all 0.75s ease;
+  cursor: pointer;
+  border-radius: 2px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 5px;
 }
-
-button:hover:before {
-  width: 100%;
+.gradient_container {
+  content: "";
+  position: absolute;
+  bottom: -50%;
+  left: 50%;
+  width: 800px;
+  height: 800px;
+  border-radius: 50% 22% 40% 80%;
+  filter: blur(100px);
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgb(189, 16, 16),
+    rgba(76, 0, 255, 0)
+  );
+  opacity: 0.2;
+  z-index: 200;
+}
+.start_btn:hover {
+  opacity: 0.9;
 }
