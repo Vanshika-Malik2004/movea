@@ -3,7 +3,16 @@
   margin: 0px;
   box-sizing: border-box;
 }
-
+/*css for the app component*/
+.app_main_container {
+  width: 100vw;
+  display: grid;
+  grid-template-columns: 0.8fr 2.2fr;
+}
+.movie_list {
+  background-color: black;
+}
+/*css for the LandingPage*/
 body {
   font-family: "Satoshi", sans-serif;
 }
@@ -96,12 +105,71 @@ body {
 
 .gradient_container {
   position: absolute;
-  bottom: -40%;
+  bottom: 100px;
   left: 20%;
   width: 800px;
   height: 800px;
   border-radius: 50% 22% 40% 80%;
   filter: blur(100px);
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgb(189, 16, 16),
+    rgba(76, 0, 255, 0)
+  );
+  opacity: 0.2;
+  z-index: 1;
+}
+/*css for the genres section*/
+.gen_main_container {
+  position: relative;
+  overflow: hidden;
+  background-color: black;
+  padding: 15px;
+  font-family: "Satoshi", sans-serif;
+  color: white;
+  width: 100%;
+  height: 100vh;
+  gap: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  border-right: 0.5px solid rgb(181, 178, 178);
+  border-top: 0.5px solid rgb(181, 178, 178);
+}
+.gen_heading {
+  width: 60%;
+}
+.gen_checked {
+  background-color: red;
+}
+.gen_genre {
+  text-align: center;
+  padding-top: 4px;
+  border-radius: 20%;
+}
+.gen_genresList {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(77px, 2fr));
+  width: 100%;
+  gap: 15px;
+}
+.gen_unchecked {
+  border: 1px solid rgb(188, 6, 6);
+  transition: all 0.3s ease-in-out;
+}
+.gen_genresList :hover {
+  transform: scale(0.95);
+}
+.gen_gradient_container {
+  position: absolute;
+  bottom: 0%;
+  transform: rotate(200deg);
+  left: -80px;
+  width: 400px;
+  height: 300px;
+  border-radius: 50% 22% 40% 80%;
+  filter: blur(50px);
   background: radial-gradient(
     circle at 50% 50%,
     rgb(189, 16, 16),
