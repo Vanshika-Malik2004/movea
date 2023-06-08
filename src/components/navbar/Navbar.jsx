@@ -3,7 +3,7 @@ import Logo from "../../assets/images/logo.png";
 const Navbar = () => {
   return (
     <nav className="navbar">
-      <img tabIndex={0} src={Logo} alt="logo" />
+      <img src={Logo} alt="logo" width={120} />
       <div className="SignIn">Sign In</div>
     </nav>
   );
