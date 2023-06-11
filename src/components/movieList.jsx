@@ -1,7 +1,16 @@
 import React from "react";
-
-const movieList = () => {
-  return <div>movieList</div>;
+import MovieElement from "./MovieElement";
+const MovieList = ({ movies }) => {
+  const renderMovies = () => {
+    return movies.map((element) => {
+      return <MovieElement movie={element} key={element.imdbid} />;
+    });
+  };
+  return (
+    <div className="ml_main_container">
+      <div className="ml_movieList">{renderMovies()}</div>
+    </div>
+  );
 };
 
-export default movieList;
+export default MovieList;
