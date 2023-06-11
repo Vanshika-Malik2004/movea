@@ -7,7 +7,7 @@ const initialGenres = [
   { label: "Drama", id: 18, isChecked: false },
   { label: "Crime", id: 80, isChecked: false },
   { label: "Horror", id: 27, isChecked: false },
-  { label: "Romance", id: 10749, isChecked: false },
+  { label: "Romantic", id: 10749, isChecked: false },
   { label: "History", id: 36, isChecked: false },
   { label: "Mystery", id: 9648, isChecked: false },
 ];

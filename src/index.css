@@ -212,6 +212,9 @@ body {
   gap: 50px;
   width: 100%;
 }
+.ml_main_container h1 {
+  margin: 20px 40px;
+}
 /*css for a single movie window*/
 .movie_container {
   width: 100%;
