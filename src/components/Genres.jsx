@@ -4,7 +4,7 @@ const initialGenres = [
   { label: "Action", id: 28, isChecked: false },
   { label: "Adventure", id: 12, isChecked: false },
   { label: "Comedy", id: 35, isChecked: false },
-  { label: "Drama", id: 18, isChecked: false },
+  { label: "Family", id: 10751, isChecked: false },
   { label: "Crime", id: 80, isChecked: false },
   { label: "Horror", id: 27, isChecked: false },
   { label: "Romantic", id: 10749, isChecked: false },
@@ -12,13 +12,6 @@ const initialGenres = [
   { label: "Mystery", id: 9648, isChecked: false },
 ];
 const Genres = ({ movies, updateMovies }) => {
-  const options = {
-    method: "GET",
-    headers: {
-      "X-RapidAPI-Key": "86e1c8cf1bmsh9e4d86eed2e1563p19fc31jsn49ff0ad6d912",
-      "X-RapidAPI-Host": "ott-details.p.rapidapi.com",
-    },
-  };
   const [choosen_genres, setChoosen_genres] = useState([]);
 
   const [genres, setGenes] = useState(initialGenres);
@@ -41,8 +34,6 @@ const Genres = ({ movies, updateMovies }) => {
         } else {
           gen.isChecked = false;
         }
-      } else {
-        gen.isChecked = false;
       }
     }
     setGenes(temp_genres);
@@ -77,31 +68,34 @@ const Genres = ({ movies, updateMovies }) => {
   };
   //function to fetch movie data through api
   const getMovies = async () => {
-    const gen_request = choosen_genres.join();
-    console.log(gen_request);
-    const url = `https://streaming-availability.p.rapidapi.com/v2/search/basic?country=us&services=netflix%2Cprime.buy%2Chulu.addon.hbo%2Cpeacock.free&output_language=en&show_type=movie&genre=${gen_request}&show_original_language=en`;
     const options = {
       method: "GET",
       headers: {
-        "X-RapidAPI-Key": "86e1c8cf1bmsh9e4d86eed2e1563p19fc31jsn49ff0ad6d912",
-        "X-RapidAPI-Host": "streaming-availability.p.rapidapi.com",
+        accept: "application/json",
+        Authorization:
+          "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3Njc5NjYyZDk0YjRmZjlmZWJiOWIxYjJhMGFhZjJiZCIsInN1YiI6IjY0ODVjZjI5ZTI3MjYwMDEwNzIyYjM3YiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.brVIieC8pCsslhY30XQXxD6VpQkcUEk197Tivo9d35Q",
       },
     };
+    const chooseGenres = choosen_genres.join("%7C");
+    console.log(chooseGenres);
 
-    const response = await fetch(url, options);
+    const response = await fetch(
+      `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc&with_genres=${chooseGenres}`,
+      options
+    );
     const data = await response.json();
     console.log(data);
     return data;
   };
   useEffect(() => {
-    (async () => {
-      const data = await getMovies();
-      const output_arr = await data.result;
-      console.log(output_arr);
-      await updateMovies(output_arr);
-    })();
-
     console.log(choosen_genres);
+    const f = async () => {
+      const response = await getMovies();
+      const data = response.results;
+      updateMovies(data);
+      console.log(data);
+    };
+    f();
   }, [genres]);
 
   return (
