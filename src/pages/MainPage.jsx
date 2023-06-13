@@ -9,7 +9,7 @@ const MainPage = () => {
   };
   return (
     <div className="mp_main_container">
-      <SearchByTitle />
+      <SearchByTitle movies={movies} updateMovies={updateMovies} />
       <Genres movies={movies} updateMovies={updateMovies} />
       <MovieList movies={movies} />
     </div>

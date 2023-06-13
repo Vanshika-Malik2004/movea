@@ -186,18 +186,6 @@ body {
   position: relative;
   overflow-x: hidden;
 }
-/*cs for the navBAR OF THE MOVIELIST SECTION*/
-.st_main_container {
-  position: fixed;
-  top: 0px;
-  right: 0px;
-  height: 80px;
-  width: 100%;
-  color: white;
-  z-index: 4;
-  background-color: black;
-  border-bottom: 1px solid #dfd6d6;
-}
 /*css for the movieList page*/
 .ml_main_container {
   width: 100%;
@@ -271,4 +259,55 @@ body {
   align-items: center;
   justify-content: center;
   backdrop-filter: blur(100px);
+}
+/*SEARCH BY TITLE CSS*/
+.st_main_container {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 60px;
+  top: 0px;
+  right: 0px;
+  height: 80px;
+  width: 100%;
+  color: white;
+  z-index: 4;
+  background-color: black;
+  border-bottom: 1px solid #dfd6d6;
+}
+
+.st_title {
+  width: 400px;
+  height: 40px;
+  background-color: transparent;
+  font-size: 15px;
+  padding: 2px 10px;
+  color: white;
+  border-right: none;
+  border: 1px solid grey;
+  border-top-left-radius: 999px;
+  border-bottom-left-radius: 999px;
+}
+.st_title:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.st_searchBtn {
+  height: 40px;
+  padding: 10px;
+  color: white;
+  background-color: rgb(71, 72, 72);
+  border: none;
+
+  border-top-right-radius: 999px;
+  border-bottom-right-radius: 999px;
+  font-size: 17px;
+  width: 60px;
 }
