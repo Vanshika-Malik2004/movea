@@ -3,7 +3,7 @@ import MovieElement from "./MovieElement";
 const MovieList = ({ movies }) => {
   const renderMovies = () => {
     return movies.map((element) => {
-      return <MovieElement movie={element} key={element.imdbid} />;
+      return <MovieElement movie={element} key={element.id} />;
     });
   };
   return (

@@ -305,9 +305,25 @@ form {
   color: white;
   background-color: rgb(71, 72, 72);
   border: none;
-
   border-top-right-radius: 999px;
   border-bottom-right-radius: 999px;
   font-size: 17px;
   width: 60px;
+}
+.movieDetails {
+  width: 100%;
+  height: 100%;
+  color: white;
+  background: linear-gradient(to bottom, black 0%, transparent 10%, black 55%);
+  overflow-x: hidden;
+  background-repeat: no-repeat;
+  background-size: contain;
+  overflow-x: hidden;
+}
+.details_main_container {
+  height: 200vh;
+  width: 100vw;
+  overflow-x: hidden;
+}
+@media screen and (max-width: 1000) {
 }
