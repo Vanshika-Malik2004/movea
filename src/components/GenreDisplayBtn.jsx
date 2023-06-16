@@ -1,7 +1,7 @@
 import React from "react";
 
 const GenreDisplayBtn = ({ children }) => {
-  return <div className="">{children}</div>;
+  return <div className="genreDisplayBtn">{children}</div>;
 };
 
 export default GenreDisplayBtn;

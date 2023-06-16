@@ -312,18 +312,114 @@ form {
 }
 .movieDetails {
   width: 100%;
-  height: 100%;
+  height: 50%;
   color: white;
-  background: linear-gradient(to bottom, black 0%, transparent 10%, black 55%);
+  background: linear-gradient(to bottom, black 0%, transparent 10%, black 90%);
   overflow-x: hidden;
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: cover;
   overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  gap: 30px;
+  padding: 30px;
 }
 .details_main_container {
   height: 200vh;
-  width: 100vw;
+  position: relative;
+  width: 100%;
   overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
 }
-@media screen and (max-width: 1000) {
+.black {
+  width: 100vw;
+  background-color: black;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  gap: 50px;
+}
+.details_logo {
+  position: absolute;
+  left: 30px;
+  top: 10px;
+  z-index: 10;
+}
+.genreDisplayBtn {
+  backdrop-filter: blur(20px);
+  text-align: center;
+  padding: 5px 17px;
+  background-color: gray;
+  color: white;
+  opacity: 0.9;
+  box-shadow: rgba(44, 44, 44, 0.2) 0px 7px 29px 0px;
+  border: 1.5px solid white;
+  border-radius: 40px;
+}
+.genre_display_list {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 20px;
+}
+.showDetails {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 220px));
+  gap: 20px;
+  width: 100%;
+}
+.DisplayDetailsCards {
+  padding: 10px 20px;
+  backdrop-filter: blur(20px);
+  color: white;
+  box-shadow: rgba(44, 44, 44, 0.2) 0px 7px 29px 0px;
+  border: 1.5px solid grey;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 10px;
+}
+.DisplayDetailsCards h3 {
+  color: rgb(64, 64, 65);
+  font-weight: 500;
+}
+.DisplayDetailsCards h2 {
+  color: white;
+  font-size: 20px;
+}
+.tagline {
+  color: white;
+  font-size: 16px;
+  font-weight: lighter;
+}
+.movie_heading {
+  color: rgb(148, 149, 150);
+  line-height: 35px;
+  font-size: 25px;
+}
+.languagesDisplay {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 10px;
+  font-weight: 700;
+}
+.movie_overview p,
+.languagesDisplay {
+  width: 60%;
+  font: 20px;
+  line-height: 25px;
+  color: white;
+}
+.producer_logo {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
 }
