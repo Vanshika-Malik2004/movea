@@ -9,7 +9,9 @@ const MovieList = ({ movies }) => {
   return (
     <div className="ml_main_container">
       <h1>Choose You Favourite</h1>
-      <div className="ml_movieList">{renderMovies()}</div>
+      <div className="ml_movieList">
+        {movies.length != 0 ? renderMovies() : "loading..."}
+      </div>
     </div>
   );
 };

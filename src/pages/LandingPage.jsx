@@ -1,4 +1,5 @@
 import { BsArrowRight } from "react-icons/bs";
+import { Link } from "react-router-dom";
 import Navbar from "../components/navbar/Navbar";
 
 const LandingPage = () => {
@@ -16,10 +17,11 @@ const LandingPage = () => {
         heartwarming romances, mind-blowing sci-fi, or thought-provoking dramas,
         Movea has got you covered.
       </div>
-      <button className="start_btn">
-        <span>Get Started</span>
+
+      <Link className="start_btn" to="mainpage">
+        <span className="start_btn_content">Get Started</span>
         <BsArrowRight className="right_arrow" />
-      </button>
+      </Link>
       <div className="gradient_container" />
     </div>
   );

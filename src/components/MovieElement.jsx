@@ -1,5 +1,6 @@
 import React from "react";
 import PlayButton from "./PlayButton";
+import { Link } from "react-router-dom";
 const ShowGenres = [
   {
     id: 28,
@@ -88,13 +89,16 @@ const MovieElement = ({ movie }) => {
   });
   const genres_display = genres.join(" / ");
   return (
-    <div className="movie_container">
+    <div className="movie_container" key={movie.id}>
       <div className="movie_poster">
         <img
           src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
         />
         <div className="movie_nav">
-          <PlayButton />
+          <Link to={`/moviedetails/${movie.id}`}>
+            {" "}
+            <PlayButton />
+          </Link>
           <div className="movie_nav_content">
             <h3>{movie.title}</h3>
             <p>{genres_display}</p>

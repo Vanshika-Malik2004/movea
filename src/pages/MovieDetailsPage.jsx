@@ -1,11 +1,46 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import bg from "../assets/images/travel.jpg";
 import logo from "../assets/images/logo.png";
 import GenreDisplayBtn from "../components/GenreDisplayBtn";
 import ProduresDisplay from "../components/ProduresDisplay";
 const MovieDetailsPage = () => {
+  const { id } = useParams();
+  console.log(id);
   const [movieDetails, setMovieDetails] = useState(null);
+  const [movieCast, setMovieCast] = useState(null);
+  const getMovieCast = async (tconst) => {
+    const url = `https://imdb8.p.rapidapi.com/title/get-top-cast?tconst=${tconst}`;
+    const options = {
+      method: "GET",
+      headers: {
+        "X-RapidAPI-Key": "86e1c8cf1bmsh9e4d86eed2e1563p19fc31jsn49ff0ad6d912",
+        "X-RapidAPI-Host": "imdb8.p.rapidapi.com",
+      },
+    };
+    const response = await fetch(url, options);
+    const data = await response.json();
+    const updateData = await data.map((e) => {
+      return e.split("/")[2];
+    });
+    const castDetails = [];
+    for (let i of updateData.slice(0, 5)) {
+      const url1 = `https://imdb8.p.rapidapi.com/actors/get-bio?nconst=${i}`;
+      const options1 = {
+        method: "GET",
+        headers: {
+          "X-RapidAPI-Key":
+            "86e1c8cf1bmsh9e4d86eed2e1563p19fc31jsn49ff0ad6d912",
+          "X-RapidAPI-Host": "imdb8.p.rapidapi.com",
+        },
+      };
+      const actorBioData = await fetch(url1, options1);
+      const actorBio = await actorBioData.json();
+      castDetails.push(actorBio);
+    }
+    return castDetails;
+  };
   const getMovieDetails = async () => {
     const options = {
       method: "GET",
@@ -16,7 +51,7 @@ const MovieDetailsPage = () => {
       },
     };
     const response = await fetch(
-      "https://api.themoviedb.org/3/movie/603692?language=en-US",
+      `https://api.themoviedb.org/3/movie/${id}?language=en-US`,
       options
     );
     const data = await response.json();
@@ -27,6 +62,10 @@ const MovieDetailsPage = () => {
     (async () => {
       const data = await getMovieDetails();
       setMovieDetails(data);
+      console.log(data.imdb_id);
+      const cast = await getMovieCast(data.imdb_id);
+      console.log(cast);
+      setMovieCast(cast);
     })();
   }, []);
   const genre_display = () => {
@@ -47,7 +86,34 @@ const MovieDetailsPage = () => {
       </div>
     );
   };
-
+  const ProducersDisplay = () => {
+    return (
+      <div className="ProcucerDisplay">
+        {movieDetails.production_companies.map((e) => {
+          return (
+            <div className="producer">
+              <ProduresDisplay logo={e.logo_path}></ProduresDisplay>
+              <h4>{e.name}</h4>
+            </div>
+          );
+        })}
+      </div>
+    );
+  };
+  const castDisplay = () => {
+    return (
+      <div className="castList">
+        {movieCast.map((e) => {
+          return (
+            <div className="actor">
+              <img src={e.image.url} />
+              <h4>{e.name}</h4>
+            </div>
+          );
+        })}
+      </div>
+    );
+  };
   const renderDetails = () => {
     return (
       <div className="details_main_container">
@@ -58,7 +124,8 @@ const MovieDetailsPage = () => {
       to bottom,
       black 0%,
       transparent 10%,
-    ),url(https://image.tmdb.org/t/p/original/1inZm0xxXrpRfN0LxwE2TXzyLN6.jpg)`,
+      black 95%
+    ),url(https://image.tmdb.org/t/p/original/${movieDetails.backdrop_path})`,
           }}
         >
           <div>
@@ -95,14 +162,21 @@ const MovieDetailsPage = () => {
             <h3 className="movie_heading">AVAILABLE IN</h3>
             {languagesDisplay()}
           </div>
+          <div className="topCast">
+            <h3 className="movie_heading">TOP CASTS</h3>
+            {movieCast != null ? castDisplay() : null}
+          </div>
         </div>
       </div>
     );
   };
+  const loading = () => {
+    return <div className="loading">Loading...</div>;
+  };
   return (
     <>
       <img src={logo} alt="logo" width={120} className="details_logo" />
-      {movieDetails != null ? renderDetails() : null}
+      {movieDetails != null ? renderDetails() : loading()}
     </>
   );
 };
