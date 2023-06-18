@@ -6,11 +6,20 @@ const MovieList = ({ movies }) => {
       return <MovieElement movie={element} key={element.id} />;
     });
   };
+  const loader = () => {
+    return (
+      <div className="lds-facebook">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    );
+  };
   return (
     <div className="ml_main_container">
       <h1>Choose You Favourite</h1>
       <div className="ml_movieList">
-        {movies.length != 0 ? renderMovies() : "loading..."}
+        {movies.length != 0 ? renderMovies() : loader()}
       </div>
     </div>
   );

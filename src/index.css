@@ -92,6 +92,9 @@ body {
   z-index: 10;
   transition: all 0.26s ease;
 }
+.start_btn_content {
+  text-decoration: none;
+}
 
 .start_btn:hover {
   /*opacity: 0.9;*/
@@ -121,38 +124,47 @@ body {
 /*css for the genres section*/
 .gen_main_container {
   position: fixed;
-  overflow: hidden;
+  overflow-y: auto;
   background-color: black;
   padding: 15px;
   font-family: "Satoshi", sans-serif;
   color: white;
   min-height: 100vh;
-  max-width: 35%;
+  max-width: 30%;
   gap: 20px;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 100px;
   border-right: 0.5px solid rgb(181, 178, 178);
   border-top: 0.5px solid rgb(181, 178, 178);
+}
+.gen_main_container::-webkit-scrollbar {
+  display: none;
 }
 .gen_heading {
   width: 60%;
 }
+
 .gen_checked {
   background-color: red;
 }
 .gen_genre {
   text-align: center;
   padding-top: 4px;
-  border-radius: 20%;
+  width: 70%;
   z-index: 4;
 }
 .gen_genresList {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(77px, 2fr));
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  justify-items: center;
   width: 100%;
-  gap: 15px;
+  gap: 20px;
 }
 .gen_unchecked {
   border: 1px solid rgb(188, 6, 6);
@@ -195,14 +207,19 @@ body {
 .ml_main_container {
   width: 100%;
   color: white;
-  padding: 100px 0px 100px 70px;
+  padding-left: 70px;
   padding-top: 100px;
+  padding-bottom: 100px;
   min-height: 100vh;
 }
 .ml_movieList {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 350px));
-  gap: 50px;
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
+  align-content: center;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 250px));
+  gap: 20px;
   width: 100%;
 }
 .ml_main_container h1 {
@@ -222,18 +239,19 @@ body {
   transform: scale(1.05);
 }
 .movie_poster img {
-  border-radius: 40px;
-  width: 350px;
-  height: 220px;
+  border-radius: 10px;
+  width: 250px;
+  object-fit: cover;
+  height: 300px;
 }
 .movie_nav {
   position: absolute;
-  border-bottom-left-radius: 40px;
-  border-bottom-right-radius: 40px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
   bottom: -0.5px;
   left: 0px;
   width: 100%;
-  height: 25%;
+  height: 40%;
   backdrop-filter: blur(20px);
   color: white;
   box-shadow: rgba(44, 44, 44, 0.2) 0px 7px 29px 0px;
@@ -243,8 +261,10 @@ body {
   padding: 5px 25px;
   gap: 10px;
 }
-.movie_nav h3 {
-  font-size: 15px;
+.me_movie_name {
+  font-size: 18px;
+  color: white;
+  text-decoration: double;
 }
 .movie_nav_content {
   display: flex;
@@ -253,8 +273,8 @@ body {
   justify-content: flex-start;
 }
 .movie_nav_content p {
-  font-size: 10px;
-  color: grey;
+  font-size: 13px;
+  color: rgb(159, 154, 154);
 }
 /*play button css*/
 .PlayButton {
@@ -287,14 +307,15 @@ body {
 }
 
 .st_title {
-  width: 400px;
+  max-width: 500px;
+  min-width: 300px;
   height: 40px;
   background-color: transparent;
   font-size: 15px;
   padding: 2px 10px;
   color: white;
   border-right: none;
-  border: 1px solid grey;
+  border: 0.5px solid grey;
   border-top-left-radius: 999px;
   border-bottom-left-radius: 999px;
 }
@@ -310,13 +331,16 @@ form {
 }
 .st_searchBtn {
   height: 40px;
-  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: white;
+  border: 0.5px solid grey;
   background-color: rgb(71, 72, 72);
-  border: none;
   border-top-right-radius: 999px;
   border-bottom-right-radius: 999px;
-  font-size: 17px;
+  font-size: 25px;
+  text-align: center;
   width: 60px;
 }
 .movieDetails {
@@ -348,7 +372,7 @@ form {
   width: 100vw;
   background-color: black;
   min-height: 100vh;
-  max-height: 200vh;
+  max-height: 400vh;
   display: flex;
   flex-direction: column;
   padding: 30px;
@@ -356,8 +380,8 @@ form {
 }
 .details_logo {
   position: absolute;
-  left: 30px;
-  top: 10px;
+  left: 40px;
+  top: 20px;
   z-index: 10;
 }
 .genreDisplayBtn {
@@ -463,23 +487,68 @@ form {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(70px, 100px));
   gap: 20px;
+  padding: 15px 0px;
   width: 100%;
   color: white;
+  overflow-x: scroll;
+}
+.castList::-webkit-scrollbar {
+  display: none;
 }
 .actor {
   display: flex;
+  max-height: 100%;
   flex-direction: column;
+  border: 0.001px solid rgb(56, 54, 54);
 }
 .actor h4 {
   font-weight: lighter;
-  font-size: 15px;
+  font-size: 13px;
+  margin: 5px;
 }
 .actor img {
-  width: 60px;
-  border-radius: 50%;
-  height: 60px;
+  object-fit: cover;
+  width: 100%;
+  height: 65%;
 }
-.loading {
-  padding-top: 200px;
-  padding-left: 200px;
+/*loader css*/
+.lds-facebook {
+  display: inline-block;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+  background-color: black;
+  gap: 5px;
+}
+.ml_movieList .lds-facebook {
+  height: 100% !important;
+  padding-top: 130px !important;
+}
+.lds-facebook div {
+  width: 10px;
+  background: rgb(202, 22, 22);
+  animation: lds-facebook 0.5s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+}
+.lds-facebook div:nth-child(1) {
+  animation-delay: -0.05s;
+}
+.lds-facebook div:nth-child(2) {
+  animation-delay: -0.1s;
+}
+.lds-facebook div:nth-child(3) {
+  animation-delay: 0;
+}
+@keyframes lds-facebook {
+  0% {
+    top: 8px;
+    height: 64px;
+  }
+  50%,
+  100% {
+    top: 24px;
+    height: 32px;
+  }
 }

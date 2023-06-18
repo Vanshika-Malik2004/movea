@@ -15,7 +15,7 @@ const MovieDetailsPage = () => {
     const options = {
       method: "GET",
       headers: {
-        "X-RapidAPI-Key": "86e1c8cf1bmsh9e4d86eed2e1563p19fc31jsn49ff0ad6d912",
+        "X-RapidAPI-Key": "980d3a5a5emsh2ff2b73d09fd093p1b6735jsn9ac8241bef33",
         "X-RapidAPI-Host": "imdb8.p.rapidapi.com",
       },
     };
@@ -24,14 +24,15 @@ const MovieDetailsPage = () => {
     const updateData = await data.map((e) => {
       return e.split("/")[2];
     });
+    console.log(updateData);
     const castDetails = [];
-    for (let i of updateData.slice(0, 5)) {
+    for (let i of updateData.slice(0, 15)) {
       const url1 = `https://imdb8.p.rapidapi.com/actors/get-bio?nconst=${i}`;
       const options1 = {
         method: "GET",
         headers: {
           "X-RapidAPI-Key":
-            "86e1c8cf1bmsh9e4d86eed2e1563p19fc31jsn49ff0ad6d912",
+            "980d3a5a5emsh2ff2b73d09fd093p1b6735jsn9ac8241bef33",
           "X-RapidAPI-Host": "imdb8.p.rapidapi.com",
         },
       };
@@ -170,13 +171,19 @@ const MovieDetailsPage = () => {
       </div>
     );
   };
-  const loading = () => {
-    return <div className="loading">Loading...</div>;
+  const loader = () => {
+    return (
+      <div className="lds-facebook">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    );
   };
   return (
     <>
       <img src={logo} alt="logo" width={120} className="details_logo" />
-      {movieDetails != null ? renderDetails() : loading()}
+      {movieDetails != null ? renderDetails() : loader()}
     </>
   );
 };

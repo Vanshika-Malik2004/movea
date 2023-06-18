@@ -95,12 +95,11 @@ const MovieElement = ({ movie }) => {
           src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
         />
         <div className="movie_nav">
-          <Link to={`/moviedetails/${movie.id}`}>
-            {" "}
-            <PlayButton />
-          </Link>
           <div className="movie_nav_content">
-            <h3>{movie.title}</h3>
+            <Link to={`/moviedetails/${movie.id}`}>
+              <h3 className="me_movie_name">{movie.title}</h3>
+            </Link>
+
             <p>{genres_display}</p>
           </div>
         </div>
