@@ -100,9 +100,11 @@ const Genres = ({ movies, updateMovies }) => {
 
   return (
     <div className="gen_main_container">
-      <h3 className="gen_heading">Choose your Favourite Genres</h3>
+      <h3 className="gen_heading">Select Genres</h3>
       {render_genres()}
-      <div className="gen_gradient_container"></div>
+      <div className="gradient-wrapper">
+        <div className="gen_gradient_container"></div>
+      </div>
     </div>
   );
 };

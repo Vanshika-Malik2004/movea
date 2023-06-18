@@ -17,7 +17,7 @@ const MovieList = ({ movies }) => {
   };
   return (
     <div className="ml_main_container">
-      <h1>Choose You Favourite</h1>
+      <h1>Choose You Favourite Movie</h1>
       <div className="ml_movieList">
         {movies.length != 0 ? renderMovies() : loader()}
       </div>

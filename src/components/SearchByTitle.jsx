@@ -40,6 +40,7 @@ const SearchByTitle = ({ movies, updateMovies }) => {
           onChange={(e) => {
             setSearchTitle(e.target.value);
           }}
+          placeholder="Search..."
         />
         <button
           className="st_searchBtn"

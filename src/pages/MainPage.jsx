@@ -8,11 +8,13 @@ const MainPage = () => {
     setMovies(updateList);
   };
   return (
-    <div className="mp_main_container">
+    <>
       <SearchByTitle movies={movies} updateMovies={updateMovies} />
-      <Genres movies={movies} updateMovies={updateMovies} />
-      <MovieList movies={movies} />
-    </div>
+      <div className="mp_main_container">
+        <Genres movies={movies} updateMovies={updateMovies} />
+        <MovieList movies={movies} />
+      </div>
+    </>
   );
 };
 
