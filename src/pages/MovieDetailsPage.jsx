@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import bg from "../assets/images/travel.jpg";
 import logo from "../assets/images/logo.png";
 import GenreDisplayBtn from "../components/GenreDisplayBtn";
@@ -104,14 +104,15 @@ const MovieDetailsPage = () => {
   const castDisplay = () => {
     return (
       <div className="castList">
-        {movieCast.map((e) => {
-          return (
-            <div className="actor">
-              <img src={e.image.url} />
-              <h4>{e.name}</h4>
-            </div>
-          );
-        })}
+        {movieCast &&
+          movieCast?.map((e) => {
+            return (
+              <div className="actor">
+                <img src={e?.image?.url} />
+                <h4>{e?.name}</h4>
+              </div>
+            );
+          })}
       </div>
     );
   };
@@ -182,7 +183,9 @@ const MovieDetailsPage = () => {
   };
   return (
     <>
-      <img src={logo} alt="logo" width={120} className="details_logo" />
+      <Link to="/mainpage">
+        <img src={logo} alt="logo" width={120} className="details_logo" />
+      </Link>
       {movieDetails != null ? renderDetails() : loader()}
     </>
   );
